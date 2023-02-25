@@ -13,10 +13,7 @@ public class StatsService {
 
     public long mediumSales(long[] sales) {
         long medium = 0;
-        long sum = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
-        }
+        long sum = sumAllSales(sales);
         medium = sum / sales.length;
         return medium;
 
@@ -27,7 +24,7 @@ public class StatsService {
 
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] >= sales[maxMonth]) { // значит, в рассматриваемом i-м месяце продаж больше
-                maxMonth = i; // запомним его как минимальный
+                maxMonth = i; // запомним его как максимальный
             }
         }
 
@@ -47,13 +44,9 @@ public class StatsService {
     }
 
     public long monthLessThanMedium(long[] sales) {
-        long medium = 0;
+        long medium = mediumSales(sales);
         long month = 0;
-        long sum = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
-        }
-        medium = sum / sales.length;
+
         for (int j = 0; j < sales.length; j++) {
             if (sales[j] < medium) {
                 month = month + 1;
@@ -64,13 +57,9 @@ public class StatsService {
     }
 
     public long monthMoreThanMedium(long[] sales) {
-        long medium = 0;
+        long medium = mediumSales(sales);
         long month = 0;
-        long sum = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
-        }
-        medium = sum / sales.length;
+
         for (int j = 0; j < sales.length; j++) {
             if (sales[j] > medium) {
                 month = month + 1;

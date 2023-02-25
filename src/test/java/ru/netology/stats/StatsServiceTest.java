@@ -66,6 +66,7 @@ public class StatsServiceTest {
         Assertions.assertEquals(expected, actual);
     }
 
+
     @Test
     void CalcNumberOfMonthLessThanMedium() {
         StatsService service = new StatsService();
